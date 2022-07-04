@@ -1,0 +1,13 @@
+name: spectator
+version: 0.1.0
+
+authors:
+  - Giorgi Kavrelishvili <giorgi.kavrelishvili@pm.me>
+
+development_dependencies:
+  grip:
+    github: grip-framework/grip
+
+crystal: ">= 0.36.0"
+
+license: MIT
