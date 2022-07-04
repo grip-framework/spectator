@@ -19,59 +19,20 @@ A test suite for the Grip framework.
 
 ## Usage
 
-Require before you require any of your tests in the `spec_helper.cr`.
+Require after you require any of your tests in the `spec_helper.cr`.
 
 ```crystal
-require "spectator"
 require "../src/your_grip_app"
+require "spectator"
 ```
 
-Create a test file for each of the controllers located in your project file.
+Test the controllers using the Spectator shard.
 
-```crystal
-# The source code for the UsersController
-module MoneyStore
-  module Controllers
-    class UsersController < Grip::Controllers::Http
-      def get(context : Context)
-        context
-          .put_status(201)
-          .json({"message" => "Hello, World!"})
-      end
-    end
-  end
-end
 ```
-
-```crystal
-# The source code for the Application
-module MoneyStore
-  class Application < Grip::Application
-    def routes
-      scope "/api" do
-        scope "/users" do
-          get "/", Controllers::UsersController
-        end
-      end
-    end
-  end
-end
-```
-
-```crystal
-# The source code for the UsersControllerTest
-module MoneyStore
-  module Controllers
-    module UsersControllerTest
-      include Spectator::Macros
-
-      describe UserController do
-        it "renders /" do
-          response = get Application.new, "/api/users/"
-          response.status_code.should eq 201
-        end
-      end
-    end
+describe "Controller test example" do
+  it "renders /" do
+    response = get Application.new, "/"
+    response.status_code.should eq 200
   end
 end
 ```
