@@ -28,7 +28,7 @@ require "spectator"
 
 Test the controllers using the Spectator shard.
 
-```
+```crystal
 describe "Controller test example" do
   it "renders /" do
     response = get Application.new, "/"
