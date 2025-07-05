@@ -5,7 +5,7 @@
     response = HTTP::Server::Response.new(io)
 
     context = HTTP::Server::Context.new(request, response)
-    handlers = application.router
+    handlers = application.handlers
 
     0.upto(handlers.size - 2) { |i| handlers[i].next = handlers[i + 1] }
 
